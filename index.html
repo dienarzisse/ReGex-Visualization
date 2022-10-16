@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RegEx Vizualization</title>
+    <link rel="stylesheet" href="style.css">
+    <script defer src="script.js"></script>
+</head>
+<body>
+    <div class="elements-container">
+    <div class="cheatsheet">
+        <div class="cheatsheet button" id="cheatsheet-button"><img src="img/cheatsheet-img.svg"></div>
+        <div class="cheatsheet content" id="cheatsheet-content">
+            <div class="exit-button">
+                <div class="cheatsheet-text">Cheatsheet</div>
+            <div class="cheatsheet exit" id="cheatsheet-exit"><img src="img/close-img.svg"></div>
+        </div>
+        <div class="scroll-table">
+            <table>
+                <th colspan="2">Character Classes</th>
+                <tr>
+                    <td>
+                        <a>.</a>
+                    </td>
+                    <td>any character except newline</td> 
+                </tr>
+                <tr>
+                  <td>
+                      <a>\w</a>
+                      <a>\d</a>
+                      <a>\s</a>
+                  </td>
+                  <td>word, digit, whitespace</td> 
+                </tr>
+                <tr>
+                    <td>
+                        <a>\w</a>
+                        <a>\d</a>
+                        <a>\s</a>
+                    </td>
+                    <td>word, digit, whitespace</td> 
+                  </tr>
+                  <tr>
+                    <td>
+                        <a>\W</a>
+                        <a>\D</a>
+                        <a>\S</a>
+                    </td>
+                    <td> no word, digit, whitespace</td> 
+                  </tr>
+                <tr>
+                    <td>
+                        <a>[abc]</a>
+                    </td>
+                    <td>any of a, b, or c</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a>[^abc]</a>
+                    </td>
+                    <td>not of a, b, or c</td>
+                </tr>
+                <tr>
+                    <td class="last-row">
+                        <a>[a-g]</a>
+                    </td>
+                    <td class="last-row">character between a & g</td>
+                </tr>
+
+                <th colspan="2">Anchors</th>
+                <tr>
+                    <td>
+                        <a>^abc$</a>
+                    </td>
+                    <td>start / end of the string</td> 
+                </tr>
+                <tr>
+                <td class="last-row">
+                    <a>\b</a>
+                    <a>\B</a>
+                </td>
+                <td class="last-row">word, not-word boundary</td> 
+                </tr>
+
+                <th colspan="2">Escaped Characters</th>
+                <tr>
+                  <td>
+                      <a>\w</a>
+                      <a>\d</a>
+                      <a>\s</a>
+                  </td>
+                  <td>word, digit, whitespace</td> 
+                </tr>
+                <tr>
+                    <td class="last-row">
+                        <a>\w</a>
+                        <a>\d</a>
+                        <a>\s</a>
+                    </td class="last-row">
+                    <td class="last-row">word, digit, whitespace</td> 
+                  </tr>
+                
+                  <th colspan="2">Groups & Lookaround</th>
+                  <tr>
+                    <td>
+                        <a>(abc)</a>
+                    </td>
+                    <td>capture group</td> 
+                  </tr>
+                  <tr>
+                      <td>
+                            <a>\1</a>
+                      </td>
+                      <td>backreference to group #1</td> 
+                    </tr>
+                    <tr>
+                        <td>
+                              <a>(?:abc)</a>
+                        </td>
+                        <td>non-capturing group</td> 
+                      </tr>
+                      <tr>
+                        <td>
+                              <a>(?=abc)</a>
+                        </td>
+                        <td>positive lookahead</td> 
+                      </tr>
+                      <tr>
+                        <td class="last-row">
+                              <a>(?!abc)</a>
+                        </td>
+                        <td class="last-row">negative lookahead</td> 
+                      </tr>
+
+                      <th colspan="2">Quantifiers & Alternation</th>
+                      <tr>
+                          <td>
+                              <a>a*</a>
+                              <a>a+</a>
+                              <a>a?</a>
+                          </td>
+                          <td>0 or more, 1 or more, 0 or 1</td> 
+                      </tr>
+                      <tr>
+                        <td>
+                            <a>a{5}</a>
+                              <a>a{2,}</a>
+                        </td>
+                        <td>xactly five, two or more</td> 
+                      </tr>
+                      <tr>
+                          <td>
+                                <a>a{1,3}</a>
+                          </td>
+                          <td>between one & three</td> 
+                        </tr>
+                        <tr>
+                            <td>
+                                  <a>a+?</a>
+                                  <a>a{2,}?</a>
+                            </td>
+                            <td>match as few as possible</td> 
+                          </tr>
+                          <tr>
+                            <td class="last-row">
+                                  <a>ab|cd</a>
+                            </td>
+                            <td class="last-row">match ab or cd</td> 
+                          </tr>
+              </table>
+            </div>
+               
+    </div>
+    </div>
+    <div class="container">
+        <div class="label expression title">
+            <span>Expression</span>
+           
+        </div><br>
+        <div class="input-container">
+            <div class="input-text style bar-start" id="bar-start">/</div>
+            <input type="text" autocomplete="off" class="expression" id="expression" name="expression" value="nam"><br>
+            <div class="input-text style bar-end" id="bar-end">/</div>
+            <div class="input-text letters">
+                <div class="input-text style lt g" id="g">g</div>
+                <div class="input-text style lt i" id="i">i</div>
+                <div class="input-text style lt m" id="m">m</div>
+                <div class="input-text style err lt s" id="s">s</div>
+                <div class="input-text style err lt u" id="u">u</div>
+                <div class="input-text style err lt y" id="y">y</div>
+            </div>
+            <div class="info-flags">
+                <div class="info global" id="info-bar-start"><span class="info-title">Open</span><br><br> Indicates the start of a regular expression.</div>
+                <div class="info global" id="info-bar-end"><span class="info-title">Close</span><br><br> Indicates the end of a regular expression and the start of expression flags.</div>
+                <div class="info global" id="info-global"><span class="info-title">Global search</span> <br><br>Retains the index of the last match, allowing interative searches.</div>
+                <div class="info case-insensitive" id="info-case-insensitive"><span class="info-title">Ignore Case</span><br><br> Makes the whole expression case-insensitive.</div>
+                <div class="info global" id="info-multiline"><span class="info-title">Multiline</span><br><br> Beginning/ending anchors <span class="info-title">(^/$)</span> wil match the start/end of a line.</div>
+                <div class="info global" id="info-single-line"><span class="info-title">Singleline/Dotall</span><br><br> Dot (<span class="info-title">.</span>) will match any character, including new line.<br><br>
+                    <span class="warring">Warring!</span><br><br><span class="error-text">The "dotall" feauture may not be supported in all browsers.</span></div>
+                <div class="info global" id="info-unicode"><span class="info-title">Unicode</span><br><br> Enables <span class="info-title">\x{FFFFF}</span> unicode escapes.<br><br>
+                    <span class="warring">Warring!</span><br><br><div><span class="error-text">The "unicode" feauture may not be supported in all browsers.</span></div></div>
+                <div class="info global" id="info-sticky"><span class="info-title">Sticky</span><br><br> The expression will only match from its lastIndex position and ignore the global g flag if set.<br><br>
+                    <span class="warring">Warring!</span><br><br><div><span class="error-text">The "sticky" feauture may not be supported in all browsers.</span></div></div>
+            </div>
+        </div>
+        <div class="label matches title">
+            <spam class="text expression">Text</spam>
+            <span id="matches">No match</span>
+        </div>
+        <div class="text-container" id="text-container" contenteditable="true" placeholder ="Write your text here..."><span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto debitis, modi ipsam consequuntur velit nam, dolorum possimus sint ab atque itaque voluptas impedit sit, saepe beatae tenetur eveniet repudiandae accusantium?</div>
+
+       
+    </div>
+    <div class="dropdown-checkbox">
+        <span class="anchor" id="anchor"><img src="img/flag-img.svg"></span>
+        <div class="checkboxes">
+            <ul class="items" id="items">
+                    
+                    <li><input type="checkbox" id="global" name="global" value="global">
+                        <label for="global" class="checkbox-text">
+                        <span>g</span>lobal
+                    </label></li>
+               
+
+                <li><input type="checkbox" id="case-insensitive" 
+                    name="case-insensitive" value="case-insensitive">
+                    <label for="case-insensitive" class="checkbox-text">
+                    case <br><span>i</span>nsensitive
+                </label></li>
+
+                <li><input type="checkbox" id="multiline" 
+                    name="multiline" value="multiline">
+                    <label for="multiline" class="checkbox-text">
+                    <span>m</span>ultiline
+                </label></li>
+
+                <li><input type="checkbox" id="singleline" 
+                    name="singleline" value="singleline" class="err">
+                    <label for="singleline" class="checkbox-text">
+                    <span>s</span>ingleline <br>(dotall)
+                </label></li>
+
+                <li><input type="checkbox" id="unicode" 
+                    name="unicode" value="unicode" class="err">
+                    <label for="unicode" class="checkbox-text">
+                    <span>u</span>nicode
+                </label></li>
+
+                <li><input type="checkbox" id="sticky" 
+                    name="sticky" value="sticky" class="err">
+                    <label for="sticky" class="checkbox-text">
+                    stick<span>y</span>
+                </label></li>
+
+        </ul>
+        </div>
+    </div>
+</div>
+</body>
+</html>
